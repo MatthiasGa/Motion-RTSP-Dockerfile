@@ -1,0 +1,9 @@
+#!/bin/bash
+ 
+docker rm motion-rtsp-container
+
+
+docker run -d -p 8080-8084:8080-8084 \
+  -v $(pwd)/conf:/usr/local/etc/motion -v $(pwd)/data:/motion-data -v $(pwd)/log:/motion-log \
+  --name=motion-rtsp-container matthias/motion-rtsp
+
